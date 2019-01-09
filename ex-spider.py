@@ -49,10 +49,7 @@ def request(phone: str):
     except requests.exceptions.BaseHTTPError:
             r.lpush(CONSUME_SEQ_KEY, phone)
             print('phone %s net work error' % phone)
-    except requests.exceptions.ConnectTimeout:
-            r.lpush(CONSUME_SEQ_KEY, phone)
-            print('phone %s net work error' % phone)
-    except requests.exceptions.ConnectionError:
+    except requests.exceptions.RequestException:
             r.lpush(CONSUME_SEQ_KEY, phone)
             print('phone %s net work error' % phone)
     else:

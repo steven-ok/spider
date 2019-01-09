@@ -30,7 +30,7 @@ def main():
     __init()
     global PHONE_INTERVAL
     prefix, cur_number = next_sequence()
-    post_seq = [i for i in PHONE_INTERVAL if i <= prefix]
+    post_seq = [i for i in PHONE_INTERVAL if i >= prefix]
     for i in post_seq:
         for next_number in range(cur_number, 100000000):
             while r.llen(CONSUME_SEQ_KEQ) >= 100000:
