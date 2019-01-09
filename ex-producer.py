@@ -1,5 +1,6 @@
 # /usr/bin/env python3
 
+import os
 import sys
 import time
 import redis
@@ -20,7 +21,7 @@ def __init():
     """系统初始化"""
     global r, cf
     cf = configparser.ConfigParser()
-    cf.read('env.conf')
+    cf.read(sys.argv[1])
     r = redis.Redis(host=cf.get("redis", 'DB_HOST'), port=cf.get("redis", "DB_PORT"), db=cf.getint("redis", "DB_INDEX"),
                     password=cf.get("redis", 'DB_PASSWORD'), decode_responses=True)
 
