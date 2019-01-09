@@ -33,12 +33,6 @@ def main():
     post_seq = [i for i in PHONE_INTERVAL if i <= prefix]
     for i in post_seq:
         for next_number in range(cur_number, 100000000):
-
-            # 防止多线程同时丢数据导致数据溢出太多
-            fs = r.hget(POST_SEQ_KEY, prefix)
-            if int(fs) >= 99999999:
-                break
-
             while r.llen(CONSUME_SEQ_KEQ) >= 100000:
                 sys.stdout.write('当前队列剩余 {0} 条 , 等待执行...\r'.format(r.llen(CONSUME_SEQ_KEQ)))
                 sys.stdout.flush()
