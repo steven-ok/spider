@@ -33,8 +33,8 @@ def main():
     post_seq = [i for i in PHONE_INTERVAL if i >= prefix]
     for i in post_seq:
         for next_number in range(cur_number, 100000000):
-            while r.llen(CONSUME_SEQ_KEQ) >= 600000:
-                sys.stdout.write('当前队列剩余 {0} 条 , 等待执行...\r'.format(r.llen(CONSUME_SEQ_KEQ)))
+            while r.llen(CONSUME_SEQ_KEQ) >= 100000:
+                sys.stdout.write('当前队列剩余 {0} 条 , 等待执行...'.format(r.llen(CONSUME_SEQ_KEQ)))
                 sys.stdout.flush()
                 time.sleep(3)
 
@@ -49,7 +49,7 @@ def main():
             pipe.rpush(CONSUME_SEQ_KEQ, number_str)
             pipe.execute()
 
-            sys.stdout.write('当前投递序列 {0} \r'.format(number_str))
+            sys.stdout.write('当前投递序列 {0} '.format(number_str))
             sys.stdout.flush()
 
         else:
