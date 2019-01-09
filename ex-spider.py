@@ -31,9 +31,12 @@ def __init():
 def main():
     __init()
     while True:
-        _, phone = r.blpop(CONSUME_SEQ_KEY, 20)
-        phone = str(phone)
-        request(phone)
+        try:
+            _, phone = r.blpop(CONSUME_SEQ_KEY, 20)
+            phone = str(phone)
+            request(phone)
+        except TypeError:
+            continue
 
 
 def request(phone: str):
