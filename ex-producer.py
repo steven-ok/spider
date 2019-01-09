@@ -33,10 +33,10 @@ def main():
     post_seq = [i for i in PHONE_INTERVAL if i >= prefix]
     for i in post_seq:
         for next_number in range(cur_number, 100000000):
-            while r.llen(CONSUME_SEQ_KEQ) >= 100000:
+            while r.llen(CONSUME_SEQ_KEQ) >= 600000:
                 sys.stdout.write('当前队列剩余 {0} 条 , 等待执行...\r'.format(r.llen(CONSUME_SEQ_KEQ)))
                 sys.stdout.flush()
-                time.sleep(5)
+                time.sleep(3)
 
             number_str = str(i) + str(next_number).zfill(8)
 
