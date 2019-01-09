@@ -1,0 +1,9 @@
+certifi==2018.11.29
+chardet==3.0.4
+fake-useragent==0.1.11
+idna==2.8
+pcrypt==1.0.4
+PyMySQL==0.9.3
+redis==3.0.1
+requests==2.21.0
+urllib3==1.24.1
