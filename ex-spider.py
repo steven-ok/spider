@@ -46,10 +46,7 @@ def request(phone: str):
         res = requests.get('http://api.echat188.com:9000/users?mobile=%s' % phone,
                            headers={'User-Agent': 'okhttp/3.0.1', 'authorization': REQUEST_TOKEN, 'Platform': 'android',
                                     'AppVersion': '1.0.6'}, timeout=5)
-    except requests.exceptions.BaseHTTPError:
-            r.lpush(CONSUME_SEQ_KEY, phone)
-            print('phone %s net work error' % phone)
-    except requests.exceptions.RequestException:
+    except BaseException:
             r.lpush(CONSUME_SEQ_KEY, phone)
             print('phone %s net work error' % phone)
     else:
