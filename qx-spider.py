@@ -35,7 +35,6 @@ def main():
         try:
             _, id = r.blpop(QX_ID_SEQ, 20)
             request(str(id))
-            time.sleep(0.2)
         except TypeError:
             continue
 
