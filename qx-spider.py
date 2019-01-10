@@ -46,7 +46,7 @@ def request(qxid: str):
     try:
         res = requests.post('http://66.liuliuda668.com:8080/user/search',
                            headers={'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 8.0.0; MIX 2 MIUI/9.1.2)',
-                                    'Authorization': REQUEST_TOKEN}, data={"qxid": "qx" + qxid}, timeout=1)
+                                    'Authorization': REQUEST_TOKEN}, data={"qxid": "qx" + qxid}, timeout=3)
 
     except requests.exceptions.BaseHTTPError:
         r.lpush(QX_ID_SEQ, qxid)
